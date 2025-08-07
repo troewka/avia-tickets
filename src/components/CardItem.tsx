@@ -1,13 +1,8 @@
 import React from 'react';
-import {
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  Button,
-  Typography,
-} from '@mui/material';
-import type { aviaTicketsProp } from '../@types/cardTypes';
+import { Box, Card, CardContent, IconButton, Typography } from '@mui/material';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+
+import { type aviaTicketsProp } from '../@types/cardTypes';
 
 export const CardItem: React.FC<aviaTicketsProp> = ({
   id,
@@ -19,26 +14,29 @@ export const CardItem: React.FC<aviaTicketsProp> = ({
   price,
   terminal,
   gate,
+  tickets,
 }) => {
   const flightInfo = [
-    { label: 'id', value: id },
-    { label: 'airline', value: airline },
-    { label: 'from', value: from },
-    { label: 'to', value: to },
-    { label: 'departureTime', value: departureTime },
-    { label: 'arrivalTime', value: arrivalTime },
-    { label: 'price', value: price },
-    { label: 'terminal', value: terminal },
-    { label: 'gate', value: gate },
+    { label: 'Ticket num', value: id },
+    { label: 'Airline', value: airline },
+    { label: 'From', value: from },
+    { label: 'To', value: to },
+    { label: 'Departure Time', value: departureTime.replace(/[tz]/gi, ' ') },
+    { label: 'Arrival Time', value: arrivalTime.replace(/[tz]/gi, ' ') },
+    { label: 'Price', value: price },
+    { label: 'Terminal', value: terminal },
+    { label: 'Gate', value: gate },
+    { label: 'Tickets remaining', value: tickets.remaining },
+    { label: 'Tickets total', value: tickets.total },
   ];
 
   const card = (
-    <React.Fragment>
+    <>
       <CardContent>
         <Typography
           sx={{ fontWeight: 700, textTransform: 'uppercase' }}
           variant='h6'
-          color='inherit'
+          color='primary'
         >
           Ticket
         </Typography>
@@ -51,7 +49,7 @@ export const CardItem: React.FC<aviaTicketsProp> = ({
             >
               <Box
                 component='span'
-                sx={{ fontSize: 18, fontWeight: 700, mr: 1 }}
+                sx={{ fontSize: 16, fontWeight: 700, mr: 1 }}
               >
                 {item.label}:
               </Box>
@@ -59,18 +57,18 @@ export const CardItem: React.FC<aviaTicketsProp> = ({
             </Typography>
           );
         })}
+        <IconButton sx={{ position: 'absolute', top: 5, right: 10 }}>
+          <FavoriteBorderIcon color='primary' />
+        </IconButton>
       </CardContent>
-      <CardActions>
-        <Button variant='outlined' size='small'>
-          Learn More
-        </Button>
-      </CardActions>
-    </React.Fragment>
+    </>
   );
 
   return (
-    <Box sx={{ minWidth: 275 }}>
-      <Card variant='outlined'>{card}</Card>
+    <Box sx={{ minWidth: 300 }}>
+      <Card variant='outlined' sx={{ cursor: 'pointer', position: 'relative' }}>
+        {card}
+      </Card>
     </Box>
   );
 };
