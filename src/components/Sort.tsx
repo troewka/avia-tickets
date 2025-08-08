@@ -24,8 +24,8 @@ export const Sort: React.FC<SortProps> = ({ value, onChange }) => {
         label='Сортувати за'
         onChange={handleChange}
       >
-        <MenuItem value='id'>Номер білета</MenuItem>
-        <MenuItem value='price'>Ціна</MenuItem>
+        <MenuItem value='id'>Номер рейсу</MenuItem>
+        <MenuItem value='price'>Ціна квитка</MenuItem>
         <MenuItem value='airline'>Авіакомпанія</MenuItem>
       </Select>
     </FormControl>

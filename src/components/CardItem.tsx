@@ -17,7 +17,7 @@ export const CardItem: React.FC<aviaTicketsProp> = ({
   tickets,
 }) => {
   const flightInfo = [
-    { label: 'Ticket num', value: id },
+    { label: 'Flight num', value: id },
     { label: 'Airline', value: airline },
     { label: 'From', value: from },
     { label: 'To', value: to },
@@ -38,7 +38,7 @@ export const CardItem: React.FC<aviaTicketsProp> = ({
           variant='h6'
           color='primary'
         >
-          Ticket
+          Flight
         </Typography>
         {flightInfo.map((item) => {
           return (
@@ -65,7 +65,7 @@ export const CardItem: React.FC<aviaTicketsProp> = ({
   );
 
   return (
-    <Box sx={{ minWidth: 300 }}>
+    <Box>
       <Card variant='outlined' sx={{ cursor: 'pointer', position: 'relative' }}>
         {card}
       </Card>

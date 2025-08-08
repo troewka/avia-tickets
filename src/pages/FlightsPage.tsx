@@ -65,7 +65,7 @@ export const FlightsPage = () => {
 
   return (
     <>
-      <Box sx={{ width: 200, mb: 2, ml: 'auto' }}>
+      <Box sx={{ maxWidth: 250, mb: 2, ml: 'auto' }}>
         <Sort value={sortBy} onChange={setSortBy} />
       </Box>
       <Box sx={{ flexGrow: 1 }}>

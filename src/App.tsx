@@ -1,17 +1,11 @@
 import React from 'react';
 
-import { Header } from './components/Header';
-import { FlightsPage } from './pages/FlightsPage';
+import { AppRoutes } from './routes/routes';
 
 import './App.css';
 
 function App() {
-  return (
-    <div>
-      <Header />
-      <FlightsPage />
-    </div>
-  );
+  return <AppRoutes />;
 }
 
 export default App;
