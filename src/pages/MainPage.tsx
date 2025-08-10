@@ -6,28 +6,21 @@ import { Header } from '../components/Header';
 
 export const MainPage = () => {
   return (
-    <Box
-      sx={{
-        minWidth: '1280px',
-        mx: 'auto',
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh', // Висота сторінки
-        border: '1px solid red',
-      }}
-    >
-      <Header />
+    <>
+      <Box>
+        <Header />
+      </Box>
+
       <Box
-        component='main'
         sx={{
-          flexGrow: 1,
-          px: 2,
-          py: 4,
+          minWidth: '1200px',
+          minHeight: '100vh',
+          padding: 2,
+          border: '1px, solid, green',
         }}
       >
         <Outlet />
       </Box>
-    </Box>
+    </>
   );
 };

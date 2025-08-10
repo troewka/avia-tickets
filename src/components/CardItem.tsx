@@ -1,8 +1,16 @@
-import React from 'react';
-import { Box, Card, CardContent, IconButton, Typography } from '@mui/material';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-
+import React, { useState } from 'react';
+import {
+  Box,
+  Card,
+  CardContent,
+  IconButton,
+  Typography,
+  Button,
+} from '@mui/material';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import { type aviaTicketsProp } from '../@types/cardTypes';
+import { Link } from 'react-router-dom';
 
 export const CardItem: React.FC<aviaTicketsProp> = ({
   id,
@@ -16,8 +24,10 @@ export const CardItem: React.FC<aviaTicketsProp> = ({
   gate,
   tickets,
 }) => {
+  const [isFavorite, setFavorite] = useState(false);
+
   const flightInfo = [
-    { label: 'Flight num', value: id },
+    { label: 'Flight №', value: id },
     { label: 'Airline', value: airline },
     { label: 'From', value: from },
     { label: 'To', value: to },
@@ -34,7 +44,11 @@ export const CardItem: React.FC<aviaTicketsProp> = ({
     <>
       <CardContent>
         <Typography
-          sx={{ fontWeight: 700, textTransform: 'uppercase' }}
+          sx={{
+            fontWeight: 700,
+            textTransform: 'uppercase',
+            textAlign: 'center',
+          }}
           variant='h6'
           color='primary'
         >
@@ -57,8 +71,28 @@ export const CardItem: React.FC<aviaTicketsProp> = ({
             </Typography>
           );
         })}
-        <IconButton sx={{ position: 'absolute', top: 5, right: 10 }}>
-          <FavoriteBorderIcon color='primary' />
+        <Link to={`/flights/${id}`}>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 1 }}>
+            <Button variant='outlined' sx={{ '&:focus': { outline: 'none' } }}>
+              Детальніше
+            </Button>
+          </Box>
+        </Link>
+
+        <IconButton
+          onClick={() => setFavorite((prev) => !prev)}
+          sx={{
+            position: 'absolute',
+            top: 5,
+            right: 10,
+            '&:focus': { outline: 'none' },
+          }}
+        >
+          {isFavorite ? (
+            <FavoriteOutlinedIcon color='primary' />
+          ) : (
+            <FavoriteBorderOutlinedIcon color='primary' />
+          )}
         </IconButton>
       </CardContent>
     </>
@@ -66,7 +100,7 @@ export const CardItem: React.FC<aviaTicketsProp> = ({
 
   return (
     <Box>
-      <Card variant='outlined' sx={{ cursor: 'pointer', position: 'relative' }}>
+      <Card variant='outlined' sx={{ position: 'relative' }}>
         {card}
       </Card>
     </Box>
