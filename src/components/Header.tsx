@@ -15,12 +15,10 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 export const Header = () => {
   const isMounted = useRef(false);
   const { aviaTickets } = useSelector((state: RootState) => state.cart);
-  console.log(aviaTickets);
 
   useEffect(() => {
     if (isMounted.current) {
       const json = JSON.stringify(aviaTickets);
-      console.log(json);
       localStorage.setItem('cart', json);
     }
     isMounted.current = true;

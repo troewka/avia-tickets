@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Box, Grid } from '@mui/material';
-
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '../store';
 import { getAviaTickets } from '../features/CardSlice';
-
+import { Box, Grid } from '@mui/material';
 import { Sort, type SortOption } from '../components/Sort';
 import { CardItem } from '../components/CardItem';
 import { SkeletonLoading } from '../components/SkeletonLoading';

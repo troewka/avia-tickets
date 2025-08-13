@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
+import { addAviaTickets } from '../features/CartSlice';
+import { SkeletonLoading } from '../components/SkeletonLoading';
 import {
   Card,
   CardMedia,
@@ -12,21 +14,7 @@ import {
   Button,
 } from '@mui/material';
 import { type aviaTicketsProp } from '../@types/cardTypes';
-import { SkeletonLoading } from '../components/SkeletonLoading';
 import bg from '../assets/airline_ticker_bg.jpg';
-import { addAviaTickets } from '../features/CartSlice';
-import { useDispatch } from 'react-redux';
-
-//type FlightState = {
-//  id: string;
-//  airline: string;
-//  from: string;
-//  to: string;
-//  departureTime: string;
-//  arrivalTime: string;
-//  price: number;
-//  terminal: number
-//};
 
 type Seat = {
   id: string;
@@ -100,12 +88,6 @@ export const FlightDetailsPage = () => {
         : [...prev, obj.id]
     );
   };
-
-  //const handleSelect = (id: string) => {
-  //  setSelected((prev) =>
-  //    prev.includes(id) ? prev.filter((seatId) => seatId !== id) : [...prev, id]
-  //  );
-  //};
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>

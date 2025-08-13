@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { type aviaTicketsProp } from '../@types/cardTypes';
 import {
   Box,
   Card,
@@ -9,8 +11,6 @@ import {
 } from '@mui/material';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
-import { type aviaTicketsProp } from '../@types/cardTypes';
-import { Link } from 'react-router-dom';
 
 export const CardItem: React.FC<aviaTicketsProp> = ({
   id,

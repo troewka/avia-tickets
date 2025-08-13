@@ -1,6 +1,11 @@
 import React from 'react';
-import { MenuItem, FormControl, Select, InputLabel } from '@mui/material';
-import type { SelectChangeEvent } from '@mui/material';
+import {
+  MenuItem,
+  FormControl,
+  Select,
+  InputLabel,
+  type SelectChangeEvent,
+} from '@mui/material';
 
 export type SortOption = 'id' | 'price' | 'airline';
 

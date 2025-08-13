@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-
 import { FlightsPage } from '../pages/FlightsPage';
 import { Cart } from '../pages/Cart';
 import { FlightDetailsPage } from '../pages/FlightDetailsPage';
