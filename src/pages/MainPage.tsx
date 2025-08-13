@@ -16,7 +16,6 @@ export const MainPage = () => {
           minWidth: '1200px',
           minHeight: '100vh',
           padding: 2,
-          border: '1px, solid, green',
         }}
       >
         <Outlet />

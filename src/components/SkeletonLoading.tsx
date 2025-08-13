@@ -1,10 +1,15 @@
 import React from 'react';
 import { Skeleton, Stack } from '@mui/material';
 
-export const SkeletonLoading = () => {
+type SkeletonProps = {
+  width: number;
+  height: number;
+};
+
+export const SkeletonLoading: React.FC<SkeletonProps> = ({ width, height }) => {
   return (
     <Stack spacing={1}>
-      <Skeleton variant='rounded' width={300} height={350} />
+      <Skeleton variant='rounded' width={width} height={height} />
     </Stack>
   );
 };

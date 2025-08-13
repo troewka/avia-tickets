@@ -9,6 +9,9 @@ export type aviaTicketsProp = {
   terminal: string;
   gate: string;
   tickets: TicketsProp;
+  flightId: string;
+  row: number;
+  seat: number;
 };
 
 export type TicketsProp = {

@@ -58,7 +58,7 @@ export const FlightsPage = () => {
   const loadingSkeleton = () => {
     return [...Array(12)].map((_, index) => (
       <Grid size={{ xs: 4, sm: 4, md: 4, lg: 3 }} key={index}>
-        <SkeletonLoading />
+        <SkeletonLoading width={300} height={400} />
       </Grid>
     ));
   };
