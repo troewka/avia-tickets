@@ -13,7 +13,7 @@ import {
   Grid,
   Button,
 } from '@mui/material';
-import { type aviaTicketsProp } from '../@types/cardTypes';
+import { type ticketType } from '../@types/cardTypes';
 import bg from '../assets/airline_ticker_bg.jpg';
 
 type Seat = {
@@ -24,7 +24,7 @@ type Seat = {
 };
 
 export const FlightDetailsPage = () => {
-  const [flight, setFlight] = useState<aviaTicketsProp>();
+  const [flight, setFlight] = useState<ticketType>();
   const [selected, setSelected] = useState<string[]>([]);
   const [seats] = useState<Seat[]>(() =>
     Array.from({ length: 60 }, (_, i) => ({

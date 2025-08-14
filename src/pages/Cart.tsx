@@ -53,83 +53,79 @@ export const Cart = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-      <Grid
-        container
-        spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
-        sx={{ flexGrow: 1 }}
-      >
-        {aviaTickets.length > 0 ? (
-          <Grid container sx={{ flexGrow: 1 }}>
-            {ticketInfo.map((ticket, index) => (
-              <Grid key={index} size={{ xs: 4, sm: 4, md: 4 }}>
-                <Paper sx={{ minWidth: 300, minHeight: 200, padding: 2 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Typography
-                      sx={{
-                        flexGrow: 1,
-                        fontSize: 18,
-                        fontWeight: 700,
-                        textAlign: 'center',
-                        textTransform: 'uppercase',
-                      }}
-                    >
-                      Ticket
-                    </Typography>
-                    <IconButton
-                      onClick={() =>
-                        onRemoveTicket(ticket.id, ticket.row, ticket.seat)
-                      }
-                      sx={{
-                        '&:focus': { outline: 'none' },
-                      }}
-                    >
-                      <BackspaceOutlinedIcon />
-                    </IconButton>
-                  </Box>
-                  <List>
-                    {ticket.info.map((info, i) => (
-                      <ListItem key={i} sx={{ padding: 0 }}>
-                        <Typography
-                          sx={{ mr: 1, fontSize: 18, fontWeight: 600 }}
-                        >
-                          {info.label}
-                        </Typography>
-                        <Typography>{info.value}</Typography>
-                      </ListItem>
-                    ))}
-                  </List>
-                </Paper>
-              </Grid>
-            ))}
-            <Grid
-              sx={{ display: 'flex', justifyContent: 'flex-start' }}
-              size={{ xs: 12 }}
-            >
-              <Typography variant='h5' textAlign='center'>
-                Загальна ціна квитків: {sum}
-              </Typography>
+    <Grid
+      container
+      spacing={{ xs: 2, md: 3 }}
+      columns={{ xs: 4, sm: 8, md: 12 }}
+      sx={{ flexGrow: 1 }}
+    >
+      {aviaTickets.length > 0 ? (
+        <Grid container sx={{ flexGrow: 1 }}>
+          {ticketInfo.map((ticket, index) => (
+            <Grid key={index} size={{ xs: 4, sm: 4, md: 4 }}>
+              <Paper sx={{ minWidth: 300, minHeight: 200, padding: 2 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Typography
+                    sx={{
+                      flexGrow: 1,
+                      fontSize: 18,
+                      fontWeight: 700,
+                      textAlign: 'center',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    Ticket
+                  </Typography>
+                  <IconButton
+                    onClick={() =>
+                      onRemoveTicket(ticket.id, ticket.row, ticket.seat)
+                    }
+                    sx={{
+                      '&:focus': { outline: 'none' },
+                    }}
+                  >
+                    <BackspaceOutlinedIcon />
+                  </IconButton>
+                </Box>
+                <List>
+                  {ticket.info.map((info, i) => (
+                    <ListItem key={i} sx={{ padding: 0 }}>
+                      <Typography sx={{ mr: 1, fontSize: 18, fontWeight: 600 }}>
+                        {info.label}
+                      </Typography>
+                      <Typography>{info.value}</Typography>
+                    </ListItem>
+                  ))}
+                </List>
+              </Paper>
             </Grid>
-          </Grid>
-        ) : (
-          <Box>
-            <Typography variant='h5' sx={{ mb: 2 }}>
-              Кошик порожній
+          ))}
+          <Grid
+            sx={{ display: 'flex', justifyContent: 'flex-start' }}
+            size={{ xs: 12 }}
+          >
+            <Typography variant='h5' textAlign='center'>
+              Загальна ціна квитків: {sum}
             </Typography>
-            <Button
-              component={Link}
-              to='/'
-              variant='contained'
-              sx={{
-                '&:hover': { color: 'white' },
-              }}
-            >
-              Повернутись на головну
-            </Button>
-          </Box>
-        )}
-      </Grid>
-    </Box>
+          </Grid>
+        </Grid>
+      ) : (
+        <Box>
+          <Typography variant='h5' sx={{ mb: 2 }}>
+            Кошик порожній
+          </Typography>
+          <Button
+            component={Link}
+            to='/'
+            variant='contained'
+            sx={{
+              '&:hover': { color: 'white' },
+            }}
+          >
+            Повернутись на головну
+          </Button>
+        </Box>
+      )}
+    </Grid>
   );
 };
