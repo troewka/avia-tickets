@@ -42,11 +42,9 @@ export const FlightsPage = () => {
   const renderCards = () => {
     if (aviaTickets.length > 0) {
       return aviaTickets.map((ticket) => (
-        <>
-          <Grid size={{ xs: 4, sm: 4, md: 4, lg: 3 }} key={ticket.id}>
-            <CardItem {...ticket} />
-          </Grid>
-        </>
+        <Grid key={ticket.id} size={{ xs: 4, sm: 4, md: 4, lg: 3 }}>
+          <CardItem {...ticket} />
+        </Grid>
       ));
     } else {
       return <h2>Щось пішло не так...</h2>;
@@ -55,7 +53,7 @@ export const FlightsPage = () => {
 
   const loadingSkeleton = () => {
     return [...Array(12)].map((_, index) => (
-      <Grid size={{ xs: 4, sm: 4, md: 4, lg: 3 }} key={index}>
+      <Grid key={index} size={{ xs: 4, sm: 4, md: 4, lg: 3 }}>
         <SkeletonLoading width={300} height={400} />
       </Grid>
     ));

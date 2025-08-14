@@ -1,4 +1,4 @@
-export type aviaTicketsProp = {
+export type ticketType = {
   id: string;
   airline: string;
   from: string;
@@ -8,17 +8,13 @@ export type aviaTicketsProp = {
   price: number;
   terminal: string;
   gate: string;
-  tickets: TicketsProp;
+  tickets: TicketCountType;
   flightId: string;
   row: number;
   seat: number;
 };
 
-export type TicketsProp = {
+export type TicketCountType = {
   total: number;
   remaining: number;
-};
-
-export type aviaTicketsState = {
-  aviaTickets: aviaTicketsProp[];
 };

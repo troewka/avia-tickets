@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { aviaTicketsState } from '../@types/cardTypes';
+import type { ticketType } from '../@types/cardTypes';
+
+type aviaTicketsState = {
+  aviaTickets: ticketType[];
+};
 
 const initialState: aviaTicketsState = {
   aviaTickets: [],

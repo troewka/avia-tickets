@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { aviaTicketsState } from '../@types/cardTypes';
+import type { ticketType } from '../@types/cardTypes';
+
+type aviaTicketsState = {
+  aviaTickets: ticketType[];
+};
 
 const data = localStorage.getItem('cart');
 const aviaTickets = data ? JSON.parse(data) : [];
@@ -14,7 +18,10 @@ export const cartSlice = createSlice({
   reducers: {
     addAviaTickets: (state, action) => {
       const ticket = state.aviaTickets.find(
-        (item) => item.flightId === action.payload.flightId
+        (item) =>
+          item.flightId === action.payload.flightId &&
+          item.row === action.payload.row &&
+          item.seat === action.payload.seat
       );
       if (!ticket) {
         state.aviaTickets.push({ ...action.payload });
@@ -22,7 +29,12 @@ export const cartSlice = createSlice({
     },
     removeAviaTickets: (state, action) => {
       state.aviaTickets = state.aviaTickets.filter(
-        (ticket) => ticket.flightId !== action.payload
+        (ticket) =>
+          !(
+            ticket.flightId === action.payload.id &&
+            ticket.seat === action.payload.seat &&
+            ticket.row === action.payload.row
+          )
       );
     },
   },

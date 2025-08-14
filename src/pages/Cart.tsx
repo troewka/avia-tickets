@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import type { RootState } from '../store';
 import { removeAviaTickets } from '../features/CartSlice';
 import {
@@ -10,7 +11,7 @@ import {
   Grid,
   List,
   ListItem,
-  ListItemText,
+  Button,
 } from '@mui/material';
 import BackspaceOutlinedIcon from '@mui/icons-material/BackspaceOutlined';
 
@@ -20,6 +21,8 @@ export const Cart = () => {
 
   const ticketInfo = aviaTickets.map((ticket) => ({
     id: ticket.flightId,
+    row: ticket.row,
+    seat: ticket.seat,
     info: [
       { label: 'Flight №:', value: ticket.flightId },
       { label: 'Seat №:', value: ticket.seat },
@@ -44,10 +47,9 @@ export const Cart = () => {
   aviaTickets.reduce((acc, ticket) => {
     return (sum = ticket.price + acc);
   }, 0);
-  console.log(sum);
 
-  const onRemoveTicket = (id: string) => {
-    dispatch(removeAviaTickets(id));
+  const onRemoveTicket = (id: string, row: number, seat: number) => {
+    dispatch(removeAviaTickets({ id, row, seat }));
   };
 
   return (
@@ -76,7 +78,9 @@ export const Cart = () => {
                       Ticket
                     </Typography>
                     <IconButton
-                      onClick={() => onRemoveTicket(ticket.id)}
+                      onClick={() =>
+                        onRemoveTicket(ticket.id, ticket.row, ticket.seat)
+                      }
                       sx={{
                         '&:focus': { outline: 'none' },
                       }}
@@ -109,7 +113,21 @@ export const Cart = () => {
             </Grid>
           </Grid>
         ) : (
-          <Typography variant='h5'>Кошик порожній</Typography>
+          <Box>
+            <Typography variant='h5' sx={{ mb: 2 }}>
+              Кошик порожній
+            </Typography>
+            <Button
+              component={Link}
+              to='/'
+              variant='contained'
+              sx={{
+                '&:hover': { color: 'white' },
+              }}
+            >
+              Повернутись на головну
+            </Button>
+          </Box>
         )}
       </Grid>
     </Box>
