@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addAviaTickets } from '../features/CartSlice';
 import { SkeletonLoading } from '../components/SkeletonLoading';
+import { ticketResource } from '../resources/ticket';
 import {
   Card,
   CardMedia,
@@ -54,9 +55,7 @@ export const FlightDetailsPage = () => {
 
   const requestFlight = async () => {
     try {
-      const response = await axios.get(
-        `https://679d13f487618946e6544ccc.mockapi.io/testove/v1/flights/${id}`
-      );
+      const response = await axios.get(ticketResource.get(id));
       setFlight(response.data);
     } catch (error) {
       console.log(`Виникла поилка: ${error}`);

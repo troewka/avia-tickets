@@ -7,6 +7,7 @@ import { Box, Grid } from '@mui/material';
 import { Sort, type SortOption } from '../components/Sort';
 import { CardItem } from '../components/CardItem';
 import { SkeletonLoading } from '../components/SkeletonLoading';
+import { ticketResource } from '../resources/ticket';
 
 export const FlightsPage = () => {
   const [loading, setLoading] = useState(true);
@@ -18,14 +19,11 @@ export const FlightsPage = () => {
   const request = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
-        'https://679d13f487618946e6544ccc.mockapi.io/testove/v1/flights',
-        {
-          params: {
-            sortBy: sortBy,
-          },
-        }
-      );
+      const response = await axios.get(ticketResource.getList(), {
+        params: {
+          sortBy: sortBy,
+        },
+      });
       dispatch(getAviaTickets(response.data));
     } catch (error) {
       console.log(`Виникла помилка ${error}`);

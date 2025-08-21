@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import type { RootState } from '../store';
+import type { ticketType } from '../@types/cardTypes';
 import { removeAviaTickets } from '../features/CartSlice';
 import {
   Box,
@@ -43,14 +44,14 @@ export const Cart = () => {
     ],
   }));
 
-  let sum = 0;
-  aviaTickets.reduce((acc, ticket) => {
-    return (sum = ticket.price + acc);
-  }, 0);
-
   const onRemoveTicket = (id: string, row: number, seat: number) => {
     dispatch(removeAviaTickets({ id, row, seat }));
   };
+
+  const getTicketsTotalPrice = (tickets: ticketType[]) => {
+    return tickets.reduce((acc, ticket) => ticket.price + acc, 0);
+  };
+  const totalPrice = getTicketsTotalPrice(aviaTickets);
 
   return (
     <Grid
@@ -105,7 +106,7 @@ export const Cart = () => {
             size={{ xs: 12 }}
           >
             <Typography variant='h5' textAlign='center'>
-              Загальна ціна квитків: {sum}
+              Загальна ціна квитків: {totalPrice}
             </Typography>
           </Grid>
         </Grid>
